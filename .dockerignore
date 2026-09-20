@@ -1,0 +1,17 @@
+**
+!global.json
+!Directory.Build.props
+!src/
+!src/LoanApp.Core/
+!src/LoanApp.Core/**
+!src/LoanApp.Api/
+!src/LoanApp.Api/**
+!src/LoanApp.Mock/
+!src/LoanApp.Mock/**
+!deploy/
+!deploy/*.Dockerfile
+!deploy/entrypoint.sh
+**/bin/**
+**/obj/**
+**/.env*
+**/Properties/**

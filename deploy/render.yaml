@@ -1,0 +1,41 @@
+# Review and supply private runtime values before creating any resources.
+# Blueprint path: deploy/render.yaml. Docker context is the repository root.
+services:
+  - type: web
+    name: loanapp-mock
+    runtime: docker
+    plan: free
+    autoDeployTrigger: "off"
+    dockerfilePath: ./deploy/mock.Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      - key: App__Profile
+        value: CloudDemo
+      - key: ConnectionStrings__MockDb
+        sync: false
+      - key: Security__IntegrationToken
+        sync: false
+  - type: web
+    name: loanapp-api
+    runtime: docker
+    plan: free
+    autoDeployTrigger: "off"
+    dockerfilePath: ./deploy/api.Dockerfile
+    dockerContext: .
+    healthCheckPath: /health/live
+    envVars:
+      - key: App__Profile
+        value: CloudDemo
+      - key: Outbox__Enabled
+        value: "true"
+      - key: ConnectionStrings__AppDb
+        sync: false
+      - key: Security__BackendToken
+        sync: false
+      - key: Security__DemoOrigin
+        sync: false
+      - key: ExternalService__BaseUrl
+        sync: false
+      - key: ExternalService__Token
+        sync: false

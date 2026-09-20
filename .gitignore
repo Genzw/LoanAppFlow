@@ -1,0 +1,25 @@
+.tools/
+.local/
+**/bin/
+**/obj/
+**/node_modules/
+**/.next/
+**/.next-e2e/
+**/test-results/
+**/playwright-report/
+**/TestResults/
+.env
+.env.*
+!.env.example
+*.user
+*.tsbuildinfo
+
+# Internal Development Tracking & Reference
+AGENTS.md
+MOVEMENTS.md
+SDD.md
+implementation_plan.md
+ADD*
+README.internal.md
+CHALLENGE.md
+scripts/_*.ps1

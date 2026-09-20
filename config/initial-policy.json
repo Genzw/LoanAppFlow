@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "rules": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "code": "STATE_NY",
+      "name": "Solicitudes del estado de Nueva York",
+      "publicMessage": "No podemos aprobar solicitudes de este estado.",
+      "enabled": true,
+      "priority": 10,
+      "effect": "Deny",
+      "match": "ALL",
+      "conditions": [
+        { "field": "address.state", "operator": "equals", "value": "NY" }
+      ]
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "code": "SSN_BLACKLIST",
+      "name": "SSN incluido en lista negra",
+      "publicMessage": "No podemos aprobar la solicitud con los datos proporcionados.",
+      "enabled": true,
+      "priority": 20,
+      "effect": "Deny",
+      "match": "ALL",
+      "conditions": [
+        { "field": "ssn", "operator": "inBlacklist" }
+      ]
+    }
+  ],
+  "blacklist": [
+    { "id": "20000000-0000-4000-8000-000000000001", "ssn": "000000001" },
+    { "id": "20000000-0000-4000-8000-000000000002", "ssn": "000000002" }
+  ]
+}
